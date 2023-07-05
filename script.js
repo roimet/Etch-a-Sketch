@@ -2,7 +2,7 @@ const sheet = document.querySelector(".sheet");
 
 const res = [];
 
-const sheetSize = 400;
+const sheetSize = 500;
 const resolution = 16;
 const eachCube = sheetSize/resolution;
 
@@ -19,6 +19,8 @@ for(i = 0; i < resolution; i++) {
     }
 }
 
+const divs = document.querySelectorAll(`.sheet div`);
 
-
-console.log(res);
+divs.forEach(div => div.addEventListener('mousedown', function(e) {
+    div.style.backgroundColor = 'red';
+}))
