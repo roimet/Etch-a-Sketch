@@ -1,7 +1,25 @@
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.total {
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-right: 10px;
+}
+
 .sheet {
     border: 1px solid red;
-    width: 500px;
-    height: 500px;
+    max-width: 500px;
+    max-height: 500px;
     display: flex;
     flex-wrap: wrap;
 }

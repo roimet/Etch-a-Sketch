@@ -10,7 +10,15 @@
 </head>
 <body>
     <h2>Etch-a-Sketch</h2>
-    <div class="settings">Settings</div>
-    <div class="sheet"></div>
+    <div class="total">
+        <div class="settings">Settings
+            <div class="Resolution">Resolution - 16x16</div>
+                <input type="range" min="2" max="64" value="16" class="slider" id="resSlider">
+            <button class="rainbow">Rainbow Mode</button>
+            <button class="eraser">Eraser</button>
+            <button class="toggleGrid">Toggle Grid</button>
+        </div>
+        <div class="sheet"></div>
+    </div>
 </body>
 </html>
