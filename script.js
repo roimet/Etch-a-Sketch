@@ -2,7 +2,6 @@ const sheet = document.querySelector(".sheet");
 const slider = document.getElementById("resSlider");
 const resolutionText = document.querySelector(".Resolution");
 
-console.log(resolutionText)
 renderCanvas(slider.value);
 
 slider.oninput = function() {
@@ -59,4 +58,18 @@ document.addEventListener('mouseup', function(e) {
 
 document.addEventListener('mouseleave', function(e) {
     isMouseDown = false;
+});
+
+const toggleGrid = document.querySelector(".toggleGrid");
+toggleGrid.addEventListener('click', function() {
+    const childDivs = document.querySelectorAll(".sheet div");
+    
+    childDivs.forEach(div => {
+        if(div.style.border === "1px solid black") {
+            div.style.border = "0px";
+        } else {
+            div.style.border = "1px solid black";
+        }
+    });
+    
 });
