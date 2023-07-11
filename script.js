@@ -22,7 +22,7 @@ function renderCanvas(resolution) {
             const div = document.createElement('div');
 
             div.setAttribute('style', 
-            `box-sizing: border-box; width: ${eachCube}px; height: ${eachCube}px; border: 1px solid black`);
+            `box-sizing: border-box; width: ${eachCube}px; height: ${eachCube}px; border: 1px solid grey`);
 
             res[i][j] = div;
             sheet.appendChild(res[i][j]);
@@ -33,13 +33,14 @@ function renderCanvas(resolution) {
 //drawing part
 const divs = document.querySelectorAll(`.sheet div`);
 let isMouseDown = false;
+let currentColor = "red";
 
 document.addEventListener('mousedown', function(e) {
     const target = e.target;
     if(target.matches('.sheet div')) {
         e.preventDefault();
         isMouseDown = true;
-        target.style.backgroundColor = 'red';
+        target.style.backgroundColor = currentColor;
     }
 });
 
@@ -47,7 +48,7 @@ document.addEventListener('mousemove', function(e) {
     if(isMouseDown) {
         const target = e.target;
         if(target.matches('.sheet div')) {
-            target.style.backgroundColor = 'red';
+            target.style.backgroundColor = currentColor;
         }
     }
 });
@@ -61,15 +62,29 @@ document.addEventListener('mouseleave', function(e) {
 });
 
 const toggleGrid = document.querySelector(".toggleGrid");
+
 toggleGrid.addEventListener('click', function() {
     const childDivs = document.querySelectorAll(".sheet div");
-    
     childDivs.forEach(div => {
-        if(div.style.border === "1px solid black") {
+        if(div.style.border === "1px solid grey") {
             div.style.border = "0px";
         } else {
-            div.style.border = "1px solid black";
+            div.style.border = "1px solid grey";
         }
     });
     
+});
+
+const eraser = document.querySelector(".eraser");
+let isEraserOn = false;
+
+eraser.addEventListener('click', function() {
+    if(!isEraserOn) {
+        isEraserOn = true;
+        previousColor = currentColor;
+        currentColor = "white";
+    } else {
+        isEraserOn = false;
+        currentColor = previousColor;
+    }
 });
