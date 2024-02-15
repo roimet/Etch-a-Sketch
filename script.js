@@ -49,13 +49,14 @@ document.addEventListener('mousedown', function(e) {
     if(target.matches('.sheet div')) {
         e.preventDefault();
         isMouseDown = true;
-        if(isRainbowOn) {
+        if(isEraserOn) {
+            target.style.backgroundColor = "white";
+        } else if (isRainbowOn) {
             target.style.backgroundColor = getRandomColor();
             lastDiv = target;
         } else {
             target.style.backgroundColor = currentColor;
         }
-        
     }
 });
 
@@ -63,7 +64,9 @@ document.addEventListener('mousemove', function(e) {
     if(isMouseDown) {
         const target = e.target;
         if(target.matches('.sheet div')) {
-            if(isRainbowOn) {
+            if(isEraserOn) {
+                target.style.backgroundColor = "white";
+            } else if(isRainbowOn) {
                 if(target !== lastDiv) {
                     target.style.backgroundColor = getRandomColor(); 
                     lastDiv = target;
@@ -123,7 +126,6 @@ rainbow.addEventListener('click', function() {
         rainbow.classList.add("active");
     } else {
         isRainbowOn = false;
-        currentColor = "red";
         rainbow.classList.remove("active");
     }
 });
